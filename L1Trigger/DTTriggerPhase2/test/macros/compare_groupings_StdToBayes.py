@@ -36,9 +36,9 @@ def IsMatched(muon1,muon2,sharedFrac=0.5):
     totMuon1=0.
     for ly in range(0,7):
         if (muon1.pathWireId(ly)>=0): totMuon1=totMuon1+1. 
-    else:                         
-        if (muon1.pathWireId(ly)!=muon2.pathWireId(ly)): continue
-        if (muon1.pathTDC(ly)!=muon2.pathTDC(ly)): continue
+    	else:                         
+        	if (muon1.pathWireId(ly)!=muon2.pathWireId(ly)): continue
+	        if (muon1.pathTDC(ly)!=muon2.pathTDC(ly)): continue
         
         numShared = numShared+1.
 
@@ -56,7 +56,7 @@ ROOT.gROOT.SetBatch(True)
 ##
 ## Main part
 ##
-files = ['/afs/cern.ch/work/c/cvicovil/private/Oviedo/Trigger/CMSSW_11_2_0_pre2/src/L1Trigger']
+files = ['/afs/cern.ch/work/c/cvicovil/private/Oviedo/Trigger/CMSSW_11_2_0_pre2/src/DTTriggerPhase2Primitives.root']
 #['/afs/cern.ch/user/f/folguera/workdir/Upgrade/DTTP/CMSSW_11_2_0_pre2/src/DTTriggerPhase2Primitives.root']
 
 print "Number of files: %d" % len(files)
@@ -220,5 +220,5 @@ for frac in [0.25,0.5,0.75,1.00]:
         
 
 import pickle 
-with open('GroupingComparison_StdToBayes_Nov6.pickle', 'wb') as handle:
+with open('GroupingComparison_StdToBayes_Nov06.pickle', 'wb') as handle:
     pickle.dump(outputDict, handle, protocol=pickle.HIGHEST_PROTOCOL)
