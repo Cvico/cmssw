@@ -57,7 +57,7 @@ ROOT.gROOT.SetBatch(True)
 ## Main part
 ##
 files = ['/afs/cern.ch/work/c/cvicovil/private/Oviedo/Trigger/CMSSW_11_2_0_pre2/src/L1Trigger']
-[#'/afs/cern.ch/user/f/folguera/workdir/Upgrade/DTTP/CMSSW_11_2_0_pre2/src/DTTriggerPhase2Primitives.root']
+#['/afs/cern.ch/user/f/folguera/workdir/Upgrade/DTTP/CMSSW_11_2_0_pre2/src/DTTriggerPhase2Primitives.root']
 
 print "Number of files: %d" % len(files)
 
