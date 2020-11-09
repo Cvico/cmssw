@@ -36,7 +36,7 @@ for st in ["MB1","MB2","MB3","MB4"]:
 
 
 #outpath = "/afs/cern.ch/user/f/folguera/www/private/L1TPhase2/DTTP/200429_Groupings/"
-outpath = "/afs/cern.ch/work/c/cvicovil/private/Oviedo/Trigger/Plots/"
+outpath = "/afs/cern.ch/work/c/cvicovil/private/Oviedo/Trigger/Plots/Kike/"
 
 if not os.path.exists(outpath):
     os.mkdir(outpath)
@@ -52,14 +52,14 @@ if not os.path.exists(outpath):
 #    os.system("cp ~folguera/public/utils/index.php %s/" %outpath)
 
 
-outFile = ROOT.TFile("GroupingComparison_StdToBayes_Nov06.root","RECREATE")
+outFile = ROOT.TFile("GroupingComparison_StdToBayes_Nov06_Kike.root","RECREATE")
 outFile.cd()
 
 ROOT.gROOT.ProcessLine('.L PlotTemplate.C+')
 ROOT.gROOT.SetBatch(True)
 ROOT.gStyle.SetOptStat(0)
 
-with open('GroupingComparison_StdToBayes_Nov06.pickle', 'rb') as handle:
+with open('GroupingComparison_StdToBayes_Nov06_Kike.pickle', 'rb') as handle:
     b = pickle.load(handle)
 
 #leg = ROOT.TLegend(0.6,0.6,0.85,0.26);
