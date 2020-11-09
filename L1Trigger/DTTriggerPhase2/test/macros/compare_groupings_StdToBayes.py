@@ -36,9 +36,9 @@ def IsMatched(muon1,muon2,sharedFrac=0.5):
     totMuon1=0.
     for ly in range(0,7):
         if (muon1.pathWireId(ly)>=0): totMuon1=totMuon1+1. 
-    	else:                         
-        	if (muon1.pathWireId(ly)!=muon2.pathWireId(ly)): continue
-	        if (muon1.pathTDC(ly)!=muon2.pathTDC(ly)): continue
+    	else: continue                        
+        if (muon1.pathWireId(ly)!=muon2.pathWireId(ly)): continue
+	if (muon1.pathTDC(ly)!=muon2.pathTDC(ly)): continue
         
         numShared = numShared+1.
 
