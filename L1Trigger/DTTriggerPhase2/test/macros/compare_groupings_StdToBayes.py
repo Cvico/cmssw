@@ -56,7 +56,7 @@ ROOT.gROOT.SetBatch(True)
 ##
 ## Main part
 ##
-files = ['/afs/cern.ch/work/c/cvicovil/private/Oviedo/Trigger/CMSSW_11_2_0_pre2/src/DTTriggerPhase2Primitives_step2.root']
+files = ['/afs/cern.ch/work/c/cvicovil/private/Oviedo/Trigger/CMSSW_11_2_0_pre2/src/DTTriggerPhase2Primitives.root']
 #['/afs/cern.ch/user/f/folguera/workdir/Upgrade/DTTP/CMSSW_11_2_0_pre2/src/DTTriggerPhase2Primitives.root']
 
 print "Number of files: %d" % len(files)
@@ -220,5 +220,5 @@ for frac in [0.25,0.5,0.75,1.00]:
         
 
 import pickle 
-with open('GroupingComparison_StdToBayes_Nov06_Kike.pickle', 'wb') as handle:
+with open('GroupingComparison_StdToBayes_Nov10_after.pickle', 'wb') as handle:
     pickle.dump(outputDict, handle, protocol=pickle.HIGHEST_PROTOCOL)
