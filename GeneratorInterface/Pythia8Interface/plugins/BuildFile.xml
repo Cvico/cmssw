@@ -26,6 +26,9 @@
 <library file="Suep*.cc" name="GeneratorInterfacePythia8SUEPHook">
 </library>
 
-<library file="JetMatchingNewFxFx*.cc" name="GeneratorInterfacePythia8JetMatchingNewFxFxHook">
+<library file="JetMatchingNew*.cc" name="GeneratorInterfacePythia8JetMatchingNewFxFxHook">
 </library>
+
+
+
 
