@@ -361,6 +361,21 @@ electronTable = simpleCandidateFlatTableProducer.clone(
         seediEtaOriX = Var("userInt('seediEtaOriX')","int8",doc="iEta or iX of seed crystal. iEta is barrel-only, iX is endcap-only. iEta runs from -85 to +85, with no crystal at iEta=0. iX runs from 1 to 100."),
         seediPhiOriY = Var("userInt('seediPhiOriY')",int,doc="iPhi or iY of seed crystal. iPhi is barrel-only, iY is endcap-only. iPhi runs from 1 to 360. iY runs from 1 to 100."),
         jetNDauCharged = Var("?userCand('jetForLepJetVar').isNonnull()?userFloat('jetNDauChargedMVASel'):0", "uint8", doc="number of charged daughters of the closest jet"),
+
+        # =================== Variables to re train the ttH MVA for Run3 =================== #
+        LepGood_pt = Var("pt", float),
+        LepGood_eta = Var("eta", float),
+        LepGood_jetNDauChargedMVASel = Var("?userCand('jetForLepJetVar').isNonnull()?userFloat('jetNDauChargedMVASel'):0", float),
+        # NB: only using Fall17V2 iso here
+        LepGood_miniRelIsoCharged = Var("userFloat('miniIsoChg_Fall17V2')/pt", float),
+        LepGood_miniRelIsoNeutral = Var("(userFloat('miniIsoAll_Fall17V2')-userFloat('miniIsoChg_Fall17V2'))/pt", float),
+        LepGood_jetPtRelv2 = Var("?userCand('jetForLepJetVar').isNonnull()?userFloat('ptRel'):0", float),
+        LepGood_jetDF = Var("?userCand('jetForLepJetVar').isNonnull()?max(userCand('jetForLepJetVar').bDiscriminator('pfDeepFlavourJetTags:probbb')+userCand('jetForLepJetVar').bDiscriminator('pfDeepFlavourJetTags:probb')+userCand('jetForLepJetVar').bDiscriminator('pfDeepFlavourJetTags:problepb'),0.0):0.0", float),
+        LepGood_jetPtRatio = Var("?userCand('jetForLepJetVar').isNonnull()?min(userFloat('ptRatio'),1.5):1.0/(1.0+userFloat('PFIsoAll04_Fall17V2')/pt)", float),
+        LepGood_dxy = Var("log(abs(dB('PV2D')))", float),
+        LepGood_sip3d = Var("abs(dB('PV3D')/edB('PV3D'))", float),
+        LepGood_dz = Var("log(abs(dB('PVDZ')))", float),
+        LepGood_mvaFall17V2noIso = Var("userFloat('mvaNoIso_Fall17V2')", float),
     ),
     externalVariables = cms.PSet(
         mvaTTH = ExtVar(cms.InputTag("electronMVATTH"),float, doc="TTH MVA lepton ID score",precision=14),
