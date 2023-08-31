@@ -52,7 +52,9 @@
 #include "DataFormats/MuonDetId/interface/DTWireId.h"
 #include "DataFormats/DTDigi/interface/DTDigiCollection.h"
 #include "DataFormats/L1DTTrackFinder/interface/L1Phase2MuDTPhContainer.h"
+#include "DataFormats/L1DTTrackFinder/interface/L1Phase2MuDTShowerContainer.h"
 #include "DataFormats/L1DTTrackFinder/interface/L1Phase2MuDTPhDigi.h"
+#include "DataFormats/L1DTTrackFinder/interface/L1Phase2MuDTShower.h"
 #include "DataFormats/L1DTTrackFinder/interface/L1Phase2MuDTExtPhContainer.h"
 #include "DataFormats/L1DTTrackFinder/interface/L1Phase2MuDTExtPhDigi.h"
 #include "DataFormats/L1DTTrackFinder/interface/L1Phase2MuDTThContainer.h"
@@ -196,6 +198,7 @@ namespace {
 DTTrigPhase2Prod::DTTrigPhase2Prod(const ParameterSet& pset)
     : qmap_({{8, 8}, {7, 7}, {6, 6}, {4, 4}, {3, 3}, {2, 2}, {1, 1}}) {
   produces<L1Phase2MuDTPhContainer>();
+  produces<L1Phase2MuDTShowerContainer>();
   produces<L1Phase2MuDTThContainer>();
   produces<L1Phase2MuDTExtPhContainer>();
   produces<L1Phase2MuDTExtThContainer>();
@@ -908,6 +911,7 @@ void DTTrigPhase2Prod::produce(Event& iEvent, const EventSetup& iEventSetup) {
   vector<L1Phase2MuDTExtPhDigi> outExtP2Ph;
   vector<L1Phase2MuDTThDigi> outP2Th;
   vector<L1Phase2MuDTExtThDigi> outExtP2Th;
+  vector<L1Phase2MuDTShower> outShower;
 
   // Assigning index value
   if (!skip_processing_)
@@ -1104,6 +1108,11 @@ void DTTrigPhase2Prod::produce(Event& iEvent, const EventSetup& iEventSetup) {
   outExtP2Th.erase(outExtP2Th.begin(), outExtP2Th.end());
   outP2Th.clear();
   outP2Th.erase(outP2Th.begin(), outP2Th.end());
+  
+  // Storing shower results
+  std::unique_ptr<L1Phase2MuDTShowerContainer> resultShower(new L1Phase2MuDTShowerContainer);
+  resultShower->setContainer(outShower);
+  iEvent.put(std::move(resultShower));
 }
 
 void DTTrigPhase2Prod::endRun(edm::Run const& iRun, const edm::EventSetup& iEventSetup) {
