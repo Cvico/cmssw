@@ -18,9 +18,12 @@ from Configuration.Eras.Modifier_run3_common_cff import run3_common
 from Configuration.Eras.Modifier_run3_nanoAOD_122_cff import run3_nanoAOD_122
 from Configuration.Eras.Modifier_run3_nanoAOD_124_cff import run3_nanoAOD_124
 from Configuration.Eras.Modifier_run3_jme_Winter22runsBCDEprompt_cff import run3_jme_Winter22runsBCDEprompt
+from Configuration.Eras.Modifier_run3_muon_2022_cff import run3_muon_2022
+from Configuration.Eras.Modifier_run3_muon_2023_cff import run3_muon_2023
 
 run2_nanoAOD_ANY = (
     run2_nanoAOD_106Xv2
 )
 
 run2_egamma = (run2_egamma_2016 | run2_egamma_2017 | run2_egamma_2018)
+run3_muon = (run3_muon_2022 | run3_muon_2023)
